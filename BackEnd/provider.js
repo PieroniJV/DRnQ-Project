@@ -28,7 +28,7 @@ async function main() {
 
 const employeeSchema = new mongoose.Schema({
     name: String,
-    iD: String,
+    id: String,
     position: String
 });
 
