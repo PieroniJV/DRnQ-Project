@@ -26,6 +26,14 @@ async function main() {
     await mongoose.connect('mongodb+srv://admin:admin@cluster0.8taek.mongodb.net/?retryWrites=true&w=majority');
 }
 
+const employeeSchema = new mongoose.Schema({
+    name: String,
+    iD: String,
+    position: String
+});
+
+const employeeModel = mongoose.model('Employees', employeeSchema);
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
   })
