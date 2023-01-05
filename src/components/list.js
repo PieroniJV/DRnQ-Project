@@ -5,14 +5,12 @@ import axios from "axios";
 export class List extends React.Component {
 
     constructor(){
-        super();
-        //this.Reload = this.Reload.bind(this);  
+        super(); 
         this.componentDidMount = this.componentDidMount.bind(this); 
     }
 
-    //change this in the server
     componentDidMount() {
-        axios.get('http://localhost:4000/api/books')
+        axios.get('http://localhost:4000/api/employees')
             .then((response) => {
                 this.setState({ employees: response.data })
             })
@@ -28,7 +26,7 @@ export class List extends React.Component {
     render() {
         return (
             <div>
-                <h3>Book List</h3>
+                <h3>Employee List</h3>
                 <Employees employees={this.state.employees} Reload={this.componentDidMount}></Employees>
             </div>
         );

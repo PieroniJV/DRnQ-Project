@@ -1,18 +1,19 @@
 import React from "react";
 import axios from "axios";
 
+//class for adding new employees to the database
 export class Add extends React.Component {
 
     constructor() {
         super();
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChangeEmployeeName = this.onChangeEmployeeName.bind(this);
-        this.onChangeEmployeeId = this.onChangeEmployeeId.bind(this);
+        this.onChangeEmployeeLocation = this.onChangeEmployeeLocation.bind(this);
         this.onChangeEmployeePosition = this.onChangeEmployeePosition.bind(this);
 
         this.state = {
             name: '',
-            id: '',
+            location: '',
             position: ''
         }
     }
@@ -21,22 +22,22 @@ export class Add extends React.Component {
         e.preventDefault();
         console.log(`Button clicked 
         ${this.state.name},
-        ${this.state.id},
+        ${this.state.location},
         ${this.state.position}`);
 
         const employee = {
             name: this.state.name,
-            id: this.state.id,
+            location: this.state.location,
             position: this.state.position
         }
 
-        axios.post('http://localhost:4000/api/books', employee)
+        axios.post('http://localhost:4000/api/employees', employee)
             .then()
             .catch();
 
         this.setState({
             name: '',
-            id: '',
+            location: '',
             position: ''
         })
     }
@@ -46,9 +47,9 @@ export class Add extends React.Component {
             name: e.target.value
         })
     }
-    onChangeEmployeeId(e) {
+    onChangeEmployeeLocation(e) {
         this.setState({
-            id: e.target.value
+            location: e.target.value
         })
     }
     onChangeEmployeePosition(e) {
@@ -72,11 +73,11 @@ export class Add extends React.Component {
                     </div>
 
                     <div className="form-group">
-                        <label>Add Employee Id: </label>
+                        <label>Add Employee Location: </label>
                         <input type="text"
                             className="form-control"
-                            value={this.state.id}
-                            onChange={this.onChangeEmployeeId}
+                            value={this.state.location}
+                            onChange={this.onChangeEmployeeLocation}
                         />
                     </div>
 

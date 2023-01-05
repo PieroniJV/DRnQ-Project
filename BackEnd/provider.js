@@ -28,12 +28,51 @@ async function main() {
 
 const employeeSchema = new mongoose.Schema({
     name: String,
-    id: String,
+    location: String,
     position: String
 });
 
 const employeeModel = mongoose.model('Employees', employeeSchema);
 
+app.post('/api/employees', (req, res) => {
+    console.log(req.body);
+
+    employeeModel.create({
+        name: req.body.name,
+        id: req.body.id,
+        position: req.body.position
+    })
+
+    res.send('Data Recieved');
+})
+
+app.get('/api/employees', (req, res) => {
+    employeeModel.find((error, data) => {
+        res.json(data);
+    })
+})
+
+app.get('/api/employee/:id', (req, res) => {
+    console.log(req.params.id);
+    employeeModel.findById(req.params.id, (error, data) => {
+        res.json(data);
+    })
+})
+
+app.put('/api/employee/:id', (req, res) => {
+    console.log('Updated: ' + req.params.id)
+    employeeModel.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, data) => {
+      res.send(data);
+    })
+  })
+
+  app.delete('/api/employee/:id', (req, res) => {
+    console.log('Deleting: ' + req.params.id);
+    employeeModel.findByIdAndDelete({ _id: req.params.id }, (error, data) => {
+      res.send(data);
+    })
+  })
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
-  })
+})

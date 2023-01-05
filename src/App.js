@@ -5,6 +5,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 
+import {Main} from './components/main';
+import {List} from './components/list';
+import {Add} from './components/add';
+import {Edit} from './components/edit';
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -27,10 +32,10 @@ class App extends React.Component{
             </Container>
           </Navbar>
           <Routes>
-            {/* <Route path='/' element={<Content></Content>}></Route>
-            <Route path='/list' element={<Read></Read>}></Route>
-            <Route path='/add' element={<Create></Create>}></Route>
-            <Route path='/edit/:id' element={<Edit></Edit>}></Route> */}
+            <Route path='/' element={<Main></Main>}></Route>
+            <Route path='/list' element={<List></List>}></Route>
+            <Route path='/add' element={<Add></Add>}></Route>
+            <Route path='/edit/:id' element={<Edit></Edit>}></Route>
           </Routes>
         </div>
       </Router>
