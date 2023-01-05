@@ -30,7 +30,7 @@ export function Edit(props) {
             .catch(function (error) {
                 console.log(error);
             })
-    }, []);
+    }, [id]);
     const handleSubmit = (event) => {
         event.preventDefault();
         const editEmployee = {
